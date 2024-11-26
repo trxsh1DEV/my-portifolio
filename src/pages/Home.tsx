@@ -21,13 +21,13 @@ import { useState } from 'react';
 const formSchema = z.object({
   email: z.string().email('Please enter a valid email address'),
   name: z.string().optional(),
-  message: z.string().min(10, 'Message must be at least 10 characters'),
+  message: z.string().min(10, 'Message must be at least 10 characters')
 });
 
 export default function Home() {
   const [ref, inView] = useInView({
     threshold: 0.1,
-    triggerOnce: true,
+    triggerOnce: true
   });
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
@@ -38,14 +38,14 @@ export default function Home() {
       const templateParams = {
         name: values.name,
         email: values.email,
-        message: values.message,
+        message: values.message
       };
 
       const response = await emailjs.send(
         'service_2uk1mth', // Substitua pelo seu serviceID
         'template_vobcd8d', // Substitua pelo seu templateID
         templateParams,
-        'ObtZ-eT3jhaurDdXa', // Substitua pelo seu userID
+        'ObtZ-eT3jhaurDdXa' // Substitua pelo seu userID
       );
 
       if (response.status !== 200) throw new Error('Failed to send message');
@@ -54,7 +54,7 @@ export default function Home() {
         title: 'Message sent successfully!',
         description: "I'll get back to you as soon as possible.",
         className: 'bg-success border-zinc-100',
-        duration: 5000,
+        duration: 5000
       });
 
       form.reset();
@@ -63,7 +63,7 @@ export default function Home() {
         title: 'Error sending message',
         description: 'Please try again later or contact me directly via email. Error: ' + error,
         variant: 'destructive',
-        duration: 5000,
+        duration: 5000
       });
     } finally {
       setLoading(false);
@@ -75,8 +75,8 @@ export default function Home() {
     defaultValues: {
       email: '',
       name: '',
-      message: '',
-    },
+      message: ''
+    }
   });
 
   const skills = [
@@ -84,23 +84,23 @@ export default function Home() {
       name: 'Frontend',
       icon: <Layout size={32} />,
       description:
-        'React, TypeScript, TailwindCSS, NextJS, Redux, Sass, Zod, EJS, MUI, Style-component, React-query, Recharts',
+        'React, TypeScript, TailwindCSS, NextJS, Redux, Sass, Zod, EJS, MUI, Style-component, React-query, Recharts'
     },
     {
       name: 'Backend',
       icon: <Server size={32} />,
-      description: 'Node.js, C#, Express, NestJS, Fastify, Jest, PostgreSQL, MySQL, MongoDB, Redis, Firebase',
+      description: 'Node.js, C#, Express, NestJS, Fastify, Jest, PostgreSQL, MySQL, MongoDB, Redis, Firebase'
     },
     {
       name: 'Mobile',
       icon: <Smartphone size={32} />,
-      description: 'React Native',
+      description: 'React Native'
     },
     {
       name: 'Other',
       icon: <Code2 size={32} />,
-      description: 'Git, Docker, AWS/Azure, Nginx/Apache, Figma, Wordpress, Strapi, Vercel, Shell Script',
-    },
+      description: 'Git, Docker, AWS/Azure, Nginx/Apache, Figma, Wordpress, Strapi, Vercel, Shell Script'
+    }
   ];
 
   const projects = [
@@ -119,10 +119,10 @@ export default function Home() {
         'MongoDB',
         'Redis',
         'Docker',
-        'Jotai',
+        'Jotai'
       ],
       link: '',
-      urlImage: '/inventory-agentetrack.png',
+      urlImage: '/inventory-agentetrack.png'
     },
     {
       title: 'IT Infrastructure Compliance',
@@ -130,7 +130,7 @@ export default function Home() {
         'Comprehensive infrastructure assessment tool that evaluates IT environments, providing detailed analytics on security posture, compliance status, and infrastructure maturity. Generates actionable insights and recommendations for improvement.',
       tech: ['Express.js', 'TypeScript', 'React', 'MongoDB', 'Keycloak', 'MUI', 'Styled-components', 'Zod'],
       link: '',
-      urlImage: '/image-compliance.png',
+      urlImage: '/image-compliance.png'
     },
     {
       title: 'E-commerce Platform',
@@ -147,10 +147,10 @@ export default function Home() {
         'React-Query',
         'Sass',
         'Recharts',
-        'Firebase',
+        'Firebase'
       ],
       link: '',
-      urlImage: '/dashboard-ecommerce.jpeg',
+      urlImage: '/dashboard-ecommerce.jpeg'
     },
     {
       title: 'Personal Blog',
@@ -165,10 +165,10 @@ export default function Home() {
         'Netlify',
         'MongoDB',
         'Disqus',
-        'Cloudinary',
+        'Cloudinary'
       ],
       link: '',
-      urlImage: '/content1-blog.png',
+      urlImage: '/content1-blog.png'
     },
     {
       title: 'Stock Management System',
@@ -176,7 +176,7 @@ export default function Home() {
         'Inventory management solution designed for social projects, featuring real-time stock tracking, automated alerts for low inventory, and comprehensive reporting system.',
       tech: ['Express.js', 'EJS', 'Webpack', 'MongoDB', 'Csurf', 'MVC'],
       link: '',
-      urlImage: '/home-stock.png',
+      urlImage: '/home-stock.png'
     },
     {
       title: 'ASD Support Website',
@@ -184,8 +184,8 @@ export default function Home() {
         'Educational website dedicated to supporting children with Autism Spectrum Disorder, providing resources, interactive content, and support information for families and caregivers.',
       tech: ['Javascript', 'HTML', 'CSS'],
       link: '',
-      urlImage: '/image2-tea.png',
-    },
+      urlImage: '/image2-tea.png'
+    }
   ];
 
   const socialLinks = [
@@ -193,20 +193,20 @@ export default function Home() {
       name: 'GitHub',
       icon: <Github className="h-10 w-10" />,
       href: 'https://github.com/trxsh1DEV?tab=repositories',
-      color: 'hover:text-[#333]',
+      color: 'hover:text-[#333]'
     },
     {
       name: 'LinkedIn',
       icon: <Linkedin className="h-10 w-10" />,
       href: 'https://www.linkedin.com/in/yago-sousa-2170571b9',
-      color: 'hover:text-[#0077b5]',
+      color: 'hover:text-[#0077b5]'
     },
     {
       name: 'Instagram',
       icon: <Instagram className="h-10 w-10" />,
       href: 'https://www.instagram.com/yaaago.s',
-      color: 'hover:text-[#E4405F]',
-    },
+      color: 'hover:text-[#E4405F]'
+    }
   ];
 
   return (
@@ -221,7 +221,7 @@ export default function Home() {
                 autoStart: true,
                 loop: true,
                 deleteSpeed: 50,
-                delay: 70,
+                delay: 70
               }}
             />
           </div>
@@ -252,7 +252,7 @@ export default function Home() {
           animate={inView ? { opacity: 1 } : {}}
           className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center"
         >
-          <div className="space-y-4">
+          <div className="space-y-4 mb-48">
             <h2 className="text-4xl font-bold">About Me</h2>
             <p className="text-muted-foreground text-xl">
               I’m a 21-year-old Brazilian full-stack developer passionate about building complete applications from
@@ -527,6 +527,15 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <footer className="py-4 bg-slate-800 text-center text-white">
+        <p>
+          Desenvolvido por{' '}
+          <NavLink to="https://github.com/trxsh1DEV?tab=repositories" target="_blank">
+            Yago (trxsh1DEV)
+          </NavLink>
+        </p>
+      </footer>
     </div>
   );
 }
